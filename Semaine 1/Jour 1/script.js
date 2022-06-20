@@ -57,14 +57,14 @@
  * @returns An array containing only truthy values
  */
 
- function falsyBouncer(arr) {
-
-
-
-    return arr
+ /*function falsyBouncer(arr) {
+    return arr.filter(Boolean);
   }
   
   
   console.log(falsyBouncer(['a', 'b', 'c', 'd'])) // a b c d
-  console.log(falsyBouncer([1, 0, "pouet", false, undefined, "machin-truc", 32, NaN, null, "hello world", ""])) // 1 machin-truc 32 hello world
+  console.log(falsyBouncer([1, 0, "pouet", false, undefined, "machin-truc", 32, NaN, null, "hello world", ""])) // 1 pouet machin-truc 32 hello world
+  */
+
+  
   

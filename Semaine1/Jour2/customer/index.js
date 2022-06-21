@@ -1,6 +1,7 @@
 // import
-
 const utils = require('./utils');
+
+const {toTTC} = utils;
 
 const priceHT = [
     { name : "Apple", priceHT : 1.0, priceTTC : null },
@@ -9,10 +10,9 @@ const priceHT = [
 ];
 
 // Modifiez le tableau pour mettre les prix TTC
-
 priceHT.map(product => {
-    let result = utils.toTTC(product.priceHT, 0.2);
+    let result = toTTC(product.priceHT, 5);
     product.priceTTC = result;
 });
 
-console.log(priceHT)
+console.log(priceHT);

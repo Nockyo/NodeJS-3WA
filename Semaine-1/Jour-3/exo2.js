@@ -43,7 +43,7 @@ readFile('./students.json', 'utf-8', (err, data) => {
             if (name == "clarisse la connasse")
             {
                 console.log("Sa moyenne ? 0. Elle est nulle. Je la déteste. Lui parlez pas. Si vous la croisez, fuyez." +
-                    " Vous méritez même pas de continuer la recherche après avoir mentionné son nom.")
+                    " Vous ne méritez même pas de continuer la recherche après avoir mentionné son nom.")
                 process.exit(0)
             }
 
@@ -56,10 +56,6 @@ readFile('./students.json', 'utf-8', (err, data) => {
             process.exit(0)
         }
 
-
     })
-
-
-
 
 })

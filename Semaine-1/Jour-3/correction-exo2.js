@@ -1,19 +1,17 @@
-// import
-
 const fs = require("fs");
 const readline = require("readline");
 const { readFileSync } = fs;
 const os = require("os");
 
-const { username } = os.userInfo();
+require("dotenv").config();
 
-// données
+const { APP_AB, APP_TB, APP_B, APP_P, APP_NR } = process.env;
+
+const { username } = os.userInfo();
 
 const data = JSON.parse(readFileSync("./students.json", "utf-8"));
 
 const { students } = data;
-
-// console.log(data);
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -38,21 +36,28 @@ rl.on("line", (line) => {
   }
 
   for (const student of students) {
-    /*
-     {
-        name: 'Bernard',
-        notes: [ 9, 8, 19, 11 ],
-        address: 'Paris',
-        mention: null
-     }
-     */
-
     const { name, notes } = student;
     if (name.toLowerCase() === line.toLowerCase()) {
       const sum = notes.reduce((acc, current) => acc + current);
       const average = Math.floor((sum / notes.length) * 100) / 100;
 
-      console.log(`${name} a obtenu une moyenne de ${average}`);
+      if (average < 10) {
+        student.mention = APP_NR;
+      } else if (average < 12) {
+        student.mention = APP_P;
+      } else if (average < 14) {
+        student.mention = APP_AB;
+      } else if (average < 16) {
+        student.mention = APP_B;
+      } else {
+        student.mention = APP_TB;
+      }
+
+      const { mention } = student;
+
+      console.log(
+        `${name} a obtenu une moyenne de ${average}. Ce qui lui confère une mention ${mention}`
+      );
       rl.prompt();
       return;
     }

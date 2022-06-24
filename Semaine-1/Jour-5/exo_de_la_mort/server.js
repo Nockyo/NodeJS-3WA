@@ -65,10 +65,9 @@ http.createServer(function (req, res) {
         req.on('end', () => {
             let array = body.split('=');
             let bodyZdaah = array[1].split('+').join(' ');
-            students.push({name : bodyZdaah});
-            console.log(students)
+            if(bodyZdaah) students.push({name : bodyZdaah});
         });
-    }
+    };
 
     if (req.url === "/bootstrap") {
         res.writeHead(200, { "Content-Type": "text/css" });
@@ -77,10 +76,37 @@ http.createServer(function (req, res) {
         res.end();
     
         return;
-    }
+    };
 
     if (req.url === "/users") {
-        res.writeHead(200, { 'Content-Type' : 'application/json' });
-        res.end( JSON.stringify(students));
-    }
+        res.writeHead(200, { 
+            'Content-Type' : 'text/html' 
+        });
+        let users = '<ul>';
+
+        for (const {name} of students) {
+            users += `<li>${name}</li>`
+        };
+        users += '</ul>';
+        res.end(`<!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <title>Ajoutez un utilisateur</title>
+                <link href="/bootstrap" rel="stylesheet" type="text/css" />
+            </head>
+            <body>
+                ${users}
+                <a href="/">back to home</a>
+            </body>
+        </html>`);
+    };
+
+    if(req.url === "/"){
+        const home = fs.readFileSync("./views/home.html");
+        res.writeHead(200, {
+            "Content-type" : "text/html"
+        });
+        res.end(home)
+    };
 }).listen(8080);

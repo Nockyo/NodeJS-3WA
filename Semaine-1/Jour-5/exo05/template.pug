@@ -1,0 +1,22 @@
+//-Exo 1 & 2
+//- if user.isAdmin
+//-     h1 Access granted
+//- else
+//-     h1 You must be logged as an administrator!
+
+//-Exo 3
+div.user-card
+    -
+        const { name, age, birthdate, location, isAdmin} = user;
+        const { first, last } = name;
+        const { zipcode, city } = location;
+
+    h4 #{first} #{last.toUpperCase()}
+        small (#{age} ans)
+    p Né le #{birthdate.toLocaleDateString()}
+    p Vit à 
+        strong #{city}, #{zipcode}
+    if isAdmin
+        span.badge-admin Est administrateur
+    else 
+        span.badge-admin Est une merde

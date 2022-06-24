@@ -1,0 +1,8 @@
+mixin menuItem(url, title)
+    li: a(href=url)= title
+
+footer
+    ul
+        +menuItem('#', 'Mentions légales')
+        +menuItem('#', 'CGU')
+        +menuItem('#', 'Me Réclamations')

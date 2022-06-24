@@ -1,70 +1,33 @@
-const http = require("http");
-const fs = require("fs");
+// définitions de plusieurs constantes à la fois
+const fs = require('fs'),
+  http = require('http'),
+  url = require('url'),
+  path = require('path');
 
-const port = 8080;
+http.createServer(function (req, res) {
+  console.log(`${req.method} ${req.url}`);
 
-const server = http.createServer((req, res) => {
-  let { url } = req;
+  // découpe l'URL
+  const parsedUrl = url.parse(req.url);
 
-  url = url.replace("/", "");
+  console.log(parsedUrl)
+  // Extrait le chemin de l'URL
+  let pathname = `.${parsedUrl.pathname}`;
 
-  if (url === "favicon.ico") {
-    res.writeHead(200, {
-      "Content-Type": "image/x-icon",
-    });
-    res.end();
-    return;
-  }
+  // __dirname donne le chemin absolu pour trouver le fichier
+  // ici la politique des urls indiquera le chemin à suivre pour récupérer le fichier
+  fs.readFile(pathname,  (err,data) => {
 
-  if (url === "") {
-    res.writeHead(404);
-    res.end();
-    return;
-  }
+    // on gère les erreurs et surtout on retourne une page 404 si il y a un problème
+    if (err) {
+      res.writeHead(404);
+      res.end(JSON.stringify(err));
+      // Il ne faut oublier de sortir de la fonction pour ne pas exécuter la suite du script
+      return;
+    }
 
-  if (url === "all") {
-    fs.readFile("./src/students.json", "utf8", (err, data) => {
-      if (err) {
-        res.end(err);
-        return;
-      }
-      res.writeHead(200, {
-        "Content-Type": "application/json",
-      });
-      res.end(data);
-    });
-  }
-
-  if (url.includes("search")) {
-    const searchParam = url.split("/")[1];
-
-    fs.readFile("./src/students.json", "utf8", (err, data) => {
-      console.log("data", typeof data);
-      if (err) {
-        res.end(err);
-        return;
-      }
-      res.writeHead(200, {
-        "Content-Type": "application/json",
-      });
-
-      let json = Object.values(JSON.parse(data).students);
-      [json] = json.filter(
-        (element) => element.name.toLowerCase() === searchParam
-      );
-      console.log(typeof json);
-      if (json !== undefined) {
-        res.end(JSON.stringify(json, null, 4));
-        return;
-      } else {
-        res.writeHead(404);
-        res.end();
-        return;
-      }
-    });
-  }
-});
-
-server.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+    // si le fichier est trouvé, définit le content-type et envoie les données
+    res.setHeader('Content-type', 'application/json');
+    res.end(data);
+  });
+}).listen(8080);

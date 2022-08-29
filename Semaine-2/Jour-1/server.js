@@ -17,8 +17,11 @@ const BASE_URL = `http://${hostname}:${port}`;
 
 const _dirname = path.dirname(fileURLToPath(import.meta.url))
 
-app.use(express.static(path.join(_dirname, "public")))
+// app.use(express.static(path.join(_dirname, "public")))
 
+app.get('/', (res, req) => {
+
+})
 app.listen(port, () => {
     console.log(`Example app listening at ${BASE_URL}`);
 });

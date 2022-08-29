@@ -1,0 +1,10 @@
+extends frontend-layout.pug
+
+block user
+    div.container
+        - const { first, last } = user.name;
+
+        h1 #{first} #{last.toUpperCase}
+        p Bienvenue sur mon portfolio
+        p Contactez-moi à l'adresse email suivante :
+        output#generate-email

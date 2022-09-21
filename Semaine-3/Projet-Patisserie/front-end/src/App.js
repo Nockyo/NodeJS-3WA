@@ -9,6 +9,7 @@ import { Pastries } from './routes/pastries';
 import { Home } from './routes/home';
 
 function App() {
+
   return (
     <Router>
       <h1>Je suis un titre</h1>

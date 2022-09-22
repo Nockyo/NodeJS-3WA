@@ -58,7 +58,6 @@ export const Home = () => {
                         onMailChange={handleMailChange}
                       />
             }
-
         </React.Fragment>
     );
 };

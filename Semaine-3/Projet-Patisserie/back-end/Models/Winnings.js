@@ -7,7 +7,7 @@ const WinningsSchema = new Schema({
         required: true,
     },
     pastries_id: {
-        type: Number,
+        type: String,
         required: true,
     }
 });

@@ -1,10 +1,10 @@
 [
-    { "id": 1, "name" : "Fondant supreme" , "number" : 10},
-    { "id": 2, "name" : "Cake tout Chocolat", "number" : 10},
-    { "id": 3, "name" : "Cake Framboise chocolat", "number" : 10},
-    { "id": 4, "name" : "Brioche sucrée avec chocolat", "number" : 10},
-    { "id": 5, "name" : "Cake glacé fondant au chocolat", "number" : 10},
-    { "id": 6, "name" : "Eclairs au chocolat", "number" : 10},
-    { "id": 7, "name" : "Tarte poire chocolat", "number" : 10},
-    { "id": 8, "name" : "Banana au chocolat", "number" : 10}
+    {"name" : "Fondant supreme" , "quantity" : 10},
+    {"name" : "Cake tout Chocolat", "quantity" : 10},
+    {"name" : "Cake Framboise chocolat", "quantity" : 10},
+    {"name" : "Brioche sucrée avec chocolat", "quantity" : 10},
+    {"name" : "Cake glacé fondant au chocolat", "quantity" : 10},
+    {"name" : "Eclairs au chocolat", "quantity" : 10},
+    {"name" : "Tarte poire chocolat", "quantity" : 10},
+    {"name" : "Banana au chocolat", "quantity" : 10}
 ]

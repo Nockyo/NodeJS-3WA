@@ -6,14 +6,18 @@ import PastriesController from '../controllers/pastries.js'
 import UsersController from '../controllers/users.js';
 import WinningsController from '../controllers/winnings.js';
 import LoginController from '../controllers/login.js'
+import { register } from '../controllers/register.js'
+import { yams } from '../controllers/yams.js'
 import { authentificateToken } from '../middlewares/authentificate.js';
-import { authentificateController } from '../controllers/authentificate.js'
+import { winners } from '../controllers/winners.js';
 
 router.get("/", HomeController);
 router.get("/pastries", PastriesController);
 router.get("/users", UsersController);
 router.get("/winnings", WinningsController);
 router.post("/login", LoginController);
-router.get("/me", authentificateToken, authentificateController);
+router.post("/register", register);
+router.get("/yams", authentificateToken, yams);
+router.get("/winners", authentificateToken, winners);
 
 export default router

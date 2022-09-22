@@ -43,7 +43,7 @@ export const yams = async (req, res) => {
             }
         };
 
-        //!!!!PEUT-ETRE PLUS UTILE DE CREER UN TABLEAU AVEC LES PASTRIES, DE BOUCLER DESSUS PUIS DE FAIRE UN UPDATEMANY, PLUTOT QUE DE FAIRE PLUSIEURS APPELS A LA BDD!!!!
+        //!PEUT-ETRE PLUS UTILE DE CREER UN TABLEAU AVEC LES PASTRIES, DE BOUCLER DESSUS PUIS DE FAIRE UN UPDATEMANY, PLUTOT QUE DE FAIRE PLUSIEURS APPELS A LA BDD
         for(let i = 0; i < winningsCount; i++){
             // Récupérer au hasard une pâtisserie
             const pastries = await PastriesModel.find({quantity: { $gt: 0 }});

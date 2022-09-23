@@ -17,6 +17,11 @@ export function getViewsPatch() {
 export function generateAccessToken(data) {
     return jwt.sign({data}, ACCESS_TOKEN_SECRET, {expiresIn: '3600s'});
 }
+
+//Créer l'access token
+export function generateRefreshToken(data) {
+    return jwt.sign({data}, REFRESH_TOKEN_SECRET, {expiresIn: '1y'});
+}
  
 // compare password
 export async function comparePassword(plaintextPassword, hash) {

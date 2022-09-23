@@ -14,16 +14,32 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         trim: true,
+        validate: value => {
+            if(value === "" || value.length <= 2){
+              throw new Error("champ vide ou trop court")
+            }
+        },
     },
     lastname: {
         type: String,
         required: true,
         trim: true,
+        validate: value => {
+            if(value === "" || value.length <= 2){
+                throw new Error("champ vide ou trop court")
+            }
+        },
     },
     password: {
         type: String,
         required: true,
         trim: true,
+        // TODO : Améliorer la vérification avec un match et une regex
+        validate: value => {
+            if(value === "" || value.length <= 2){
+              throw new Error("champ vide ou trop court")
+            }
+        },
     }
 });
 

@@ -10,14 +10,16 @@ import { register } from '../controllers/register.js'
 import { yams } from '../controllers/yams.js'
 import { authentificateToken } from '../middlewares/authentificate.js';
 import { winners } from '../controllers/winners.js';
+import { switchLog } from '../controllers/switchLog.js';
 
 router.get("/", HomeController);
 router.get("/pastries", PastriesController);
 router.get("/users", UsersController);
 router.get("/winnings", WinningsController);
+router.post("/switchLog", switchLog);
 router.post("/login", LoginController);
 router.post("/register", register);
 router.get("/yams", authentificateToken, yams);
-router.get("/winners", authentificateToken, winners);
+router.get("/winners", winners);
 
 export default router
